@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "831815927424",
+    "firebase_url": "https://eventoutfyp-4e342.firebaseio.com",
+    "project_id": "eventoutfyp-4e342",
+    "storage_bucket": "eventoutfyp-4e342.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:831815927424:android:0457afed5a2ded51",
+        "android_client_info": {
+          "package_name": "com.info.eventoutfyp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "831815927424-1d9apgolobt38c1shfb29d4gqbc6j1s2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBX9XkKq8C0bmKPRX-uo_Mbbp0ddgD435I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
