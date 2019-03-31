@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Firebase Auth</string>
+    <string name="app_name">EventOut</string>
     <string name="action_sign_in_short">Register</string>
     <string name="email">Email</string>
     <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
@@ -9,12 +9,22 @@
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="btn_login">LOGIN</string>
-    <string name="btn_link_to_login">already registered. login me!</string>
-    <string name="btn_link_to_register">Register by pressing button</string>
+    <string name="btn_link_to_login">Already registered. Login!</string>
+    <string name="btn_link_to_register">Register</string>
     <string name="btn_forgot_password">Forgot your password?</string>
     <string name="btn_reset_password">Reset Password</string>
     <string name="btn_back"><![CDATA[<< Back]]></string>
     <string name="btn_sign_out">Sign Out</string>
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+    <string name="designation_prompt">Choose Designation</string>
+    <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
+    <string name="facebook_application_id" translatable="false">371223647031526</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb371223647031526</string>
+
+    <string-array name="designation_list">
+        <item>Attender</item>
+        <item>Venue Owner</item>
+    </string-array>
+
 </resources>

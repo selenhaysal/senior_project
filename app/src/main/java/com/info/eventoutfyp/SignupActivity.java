@@ -107,6 +107,8 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
+
+
     private void resetPassword() {
         final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
