@@ -54,6 +54,13 @@
                 android:maxLines="1"
                 android:textColor="@color/input_register" />
         </android.support.design.widget.TextInputLayout>
+        <!--spinner for designation -->
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:entries="@array/designation_list"
+            android:prompt="@string/designation_prompt" />
         <!-- Sign up Button -->
         <Button
             android:id="@+id/sign_up_button"
