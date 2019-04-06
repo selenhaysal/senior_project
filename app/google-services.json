@@ -15,8 +15,12 @@
       },
       "oauth_client": [
         {
-          "client_id": "831815927424-1d9apgolobt38c1shfb29d4gqbc6j1s2.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "831815927424-5v114ambslg04ki99d2im90f1epf4tn1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.info.eventoutfyp",
+            "certificate_hash": "9ae17311e34a7d792516b201ae750252b3ebb12b"
+          }
         }
       ],
       "api_key": [
@@ -25,15 +29,13 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "831815927424-1d9apgolobt38c1shfb29d4gqbc6j1s2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

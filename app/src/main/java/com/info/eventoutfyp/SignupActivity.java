@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -18,6 +19,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -25,6 +27,7 @@ public class SignupActivity extends AppCompatActivity {
     private Button btnSignIn, btnSignUp, btnResetPassword;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
+    private String id = "attender";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,8 @@ public class SignupActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
 
+
+
         btnResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +69,7 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String email = inputEmail.getText().toString().trim();
+                final String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
@@ -97,6 +102,13 @@ public class SignupActivity extends AppCompatActivity {
                                     Toast.makeText(SignupActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
+                                    User user = new User(email, id );
+
+                                    FirebaseDatabase.getInstance().getReference("Users")
+                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
+
+
+
                                     startActivity(new Intent(SignupActivity.this, MainActivity.class));
                                     finish();
                                 }
@@ -157,4 +169,23 @@ public class SignupActivity extends AppCompatActivity {
         super.onResume();
         progressBar.setVisibility(View.GONE);
     }
+
+    public void onCheckboxClicked(View view) {
+        // Is the view now checked?
+        boolean checked = ((CheckBox) view).isChecked();
+
+        // Check if checkbox was clicked
+        switch(view.getId()) {
+            case R.id.checkbox:
+                if (checked){
+                    id = "venue owner";
+                }
+
+        }
+    }
+
+
+
+
+
 }

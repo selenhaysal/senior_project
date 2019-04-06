@@ -55,12 +55,6 @@
                 android:textColor="@color/input_login"
                 android:textColorHint="@color/input_login_hint" />
         </android.support.design.widget.TextInputLayout>
-        <Spinner
-            android:id="@+id/spinner1"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:entries="@array/designation_list"
-            android:prompt="@string/designation_prompt" />
         <!-- Login Button -->
         <Button
             android:id="@+id/btn_login"

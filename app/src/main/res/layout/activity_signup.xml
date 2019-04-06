@@ -54,13 +54,13 @@
                 android:maxLines="1"
                 android:textColor="@color/input_register" />
         </android.support.design.widget.TextInputLayout>
-        <!--spinner for designation -->
-        <Spinner
-            android:id="@+id/spinner1"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:entries="@array/designation_list"
-            android:prompt="@string/designation_prompt" />
+        <!--check-box for venue owners -->
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Are you a venue owner?"
+            android:onClick="onCheckboxClicked" />
         <!-- Sign up Button -->
         <Button
             android:id="@+id/sign_up_button"

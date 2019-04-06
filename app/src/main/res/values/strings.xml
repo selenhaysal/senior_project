@@ -22,9 +22,6 @@
     <string name="facebook_application_id" translatable="false">371223647031526</string>
     <string name="facebook_login_protocol_scheme" translatable="false">fb371223647031526</string>
 
-    <string-array name="designation_list">
-        <item>Attender</item>
-        <item>Venue Owner</item>
-    </string-array>
+
 
 </resources>
