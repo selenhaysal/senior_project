@@ -7,7 +7,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -25,6 +25,9 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private ProgressBar progressBar;
     private Button btnSignup, btnLogin, btnReset;
+    DatabaseReference databaseReference;
+    private int type;
+    private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +36,9 @@ public class LoginActivity extends AppCompatActivity {
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
+
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            startActivity(new Intent(LoginActivity.this, OwnerMainActivity.class));
             finish();
         }
 
@@ -51,8 +55,20 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnReset = (Button) findViewById(R.id.btn_reset_password);
 
-        //Get Firebase auth instance
-        auth = FirebaseAuth.getInstance();
+
+//        databaseReference = FirebaseDatabase.getInstance().getReference(auth.getCurrentUser().getUid());
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                User user = dataSnapshot.getValue(User.class);
+//                type = user.getUserType();
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                Toast.makeText(LoginActivity.this, databaseError.getCode(),Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,9 +120,20 @@ public class LoginActivity extends AppCompatActivity {
                                         Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                    startActivity(intent);
+
+                                    startActivity(new Intent(LoginActivity.this, OwnerMainActivity.class));
+//                                    uid = auth.getCurrentUser().getUid();
+//                                    // database'e ulas
+//                                    //uid'yi auth'tan al, database'de users nodunda gezerken ismi eslesene, type if'i yaz
+//                                    if(type==0) {
+//                                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+//                                    }
+//                                    else if(type==1)
+//                                    {
+//                                        startActivity(new Intent(LoginActivity.this, OwnerMainActivity.class));
+//                                    }
                                     finish();
+
                                 }
                             }
                         });
@@ -162,4 +189,7 @@ public class LoginActivity extends AppCompatActivity {
         });
         dialog.show();
     }
+
+
+
 }

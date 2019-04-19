@@ -12,4 +12,9 @@
     <color name="btn_login_register">#2196F3</color>
     <color name="btn_register">#0D47A1</color>
     <color name="btn_logut">#ff6861</color>
+    <color name="editTextBG">#DADADA</color>
+    <color name="transparent">#00000000</color>
+    <color name="textColor">#6e6e6e</color>
+    <color name="status_color">#915A00</color>
+    <color name="grey">#ff4800</color>
 </resources>

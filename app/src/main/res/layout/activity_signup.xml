@@ -59,8 +59,7 @@
             android:id="@+id/checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Are you a venue owner?"
-            android:onClick="onCheckboxClicked" />
+            android:text="Are you a venue owner?" />
         <!-- Sign up Button -->
         <Button
             android:id="@+id/sign_up_button"

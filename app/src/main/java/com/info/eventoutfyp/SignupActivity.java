@@ -15,6 +15,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+
+import android.widget.CompoundButton;
+
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -27,14 +31,16 @@ public class SignupActivity extends AppCompatActivity {
     private Button btnSignIn, btnSignUp, btnResetPassword;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
-    private String id = "attender";
+    private int type = 0;//encoded for attender
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_signup);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        CheckBox checkbox = (CheckBox)findViewById(R.id.checkbox);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -54,9 +60,29 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 resetPassword();
-                //startActivity(new Intent(SignupActivity.this, ResetPasswordActivity.class));
             }
         });
+
+
+
+
+        checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(isChecked)
+                {
+                    type = 1;
+                }
+                else
+                {
+                    type = 0;
+                }
+
+            }
+
+        });
+
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,11 +92,13 @@ public class SignupActivity extends AppCompatActivity {
         });
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 
                 final String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
+
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
@@ -102,23 +130,42 @@ public class SignupActivity extends AppCompatActivity {
                                     Toast.makeText(SignupActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    User user = new User(email, id );
+
+                                    User user = new User(email, type);
+                                    Toast.makeText(SignupActivity.this, "BEFORE: " + type,
+                                            Toast.LENGTH_SHORT).show();
+
+
 
                                     FirebaseDatabase.getInstance().getReference("Users")
                                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
 
 
+                                    Intent intent1 = new Intent(SignupActivity.this, AttenderMapsActivity.class);
+                                    Intent intent2 = new Intent(SignupActivity.this, OwnerMainActivity.class);
+                                    if(type==0)
+                                    {
+                                        //Intent intent1 = new Intent(SignupActivity.this, OwnerMainActivity.class);
+                                        startActivity(intent1);
+                                        Toast.makeText(SignupActivity.this, "AFTER 0: " + type,
+                                                Toast.LENGTH_SHORT).show();
+                                    }
+                                    else
+                                    {
 
-                                    startActivity(new Intent(SignupActivity.this, MainActivity.class));
-                                    finish();
+                                        startActivity(intent2);
+                                        Toast.makeText(SignupActivity.this, "AFTER 1: " + type,
+                                                Toast.LENGTH_SHORT).show();
+                                    }
+
+
+
                                 }
                             }
                         });
-
             }
         });
     }
-
 
 
     private void resetPassword() {
@@ -131,7 +178,6 @@ public class SignupActivity extends AppCompatActivity {
         final Button btnReset = (Button) dialogView.findViewById(R.id.btn_reset_password);
         final ProgressBar progressBar1 = (ProgressBar) dialogView.findViewById(R.id.progressBar);
 
-        //dialogBuilder.setTitle("Send Photos");
         final AlertDialog dialog = dialogBuilder.create();
 
         btnReset.setOnClickListener(new View.OnClickListener() {
@@ -169,22 +215,6 @@ public class SignupActivity extends AppCompatActivity {
         super.onResume();
         progressBar.setVisibility(View.GONE);
     }
-
-    public void onCheckboxClicked(View view) {
-        // Is the view now checked?
-        boolean checked = ((CheckBox) view).isChecked();
-
-        // Check if checkbox was clicked
-        switch(view.getId()) {
-            case R.id.checkbox:
-                if (checked){
-                    id = "venue owner";
-                }
-
-        }
-    }
-
-
 
 
 
