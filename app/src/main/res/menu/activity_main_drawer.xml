@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_events"
+            android:icon="@drawable/ic_event_black_24dp"
+            android:title="Events" />
+        <item
+            android:id="@+id/nav_discounts"
+            android:icon="@drawable/ic_money_off_black_24dp"
+            android:title="Discounts" />
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="Profile" />
+    </group>
+
+    <item android:title="Support" >
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Settings"
+                android:checkable="true"/>
+            <item
+                android:id="@+id/nav_exit"
+                android:icon="@drawable/ic_exit_24dp"
+                android:title="Sign Out"
+                android:checkable="true"/>
+        </menu>
+    </item>
+
+</menu>

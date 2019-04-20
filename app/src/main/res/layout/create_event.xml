@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context="EventsFragment">
+
+
+
+    <!--
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/background"
+            android:scaleType="centerCrop"/>-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:id="@+id/wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/event_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:drawableLeft="@drawable/ic_title_black_24dp"
+                android:drawablePadding="15dp"
+                android:hint="Title"
+                android:paddingStart="10dp"
+                android:textColor="@color/grey"
+                android:textColorHint="@color/grey" />
+
+            <TextView
+                android:id="@+id/event_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:drawableLeft="@drawable/ic_date_range_black_24dp"
+                android:drawablePadding="15dp"
+                android:hint="DD/MM/YY"
+                android:focusable="false"
+                android:paddingStart="10dp"
+                android:textColor="@color/grey"
+                android:textColorHint="@color/grey" />
+
+
+            <TextView
+                android:id="@+id/event_start_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:drawableLeft="@drawable/ic_access_time_black_24dp"
+                android:drawablePadding="15dp"
+                android:hint=" Start Time"
+                android:focusable="false"
+                android:paddingStart="10dp"
+                android:textColor="@color/grey"
+                android:textColorHint="@color/grey" />
+
+            <TextView
+                android:id="@+id/event_end_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:drawableLeft="@drawable/ic_access_time_black_24dp"
+                android:drawablePadding="15dp"
+                android:hint="End Time"
+                android:focusable="false"
+                android:paddingStart="10dp"
+                android:textColor="@color/grey"
+                android:textColorHint="@color/grey" />
+
+            <EditText
+                android:id="@+id/event_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:drawableLeft="@drawable/ic_menu_send"
+                android:drawablePadding="15dp"
+                android:hint="Description"
+                android:paddingStart="10dp"
+                android:textColor="@color/grey"
+                android:textColorHint="@color/grey" />
+
+            <EditText
+                android:id="@+id/event_quota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:drawableLeft="@drawable/ic_menu_send"
+                android:drawablePadding="15dp"
+                android:hint="specify quoata if needed"
+                android:paddingStart="10dp"
+                android:inputType="numberDecimal"
+                android:textColor="@color/grey"
+                android:textColorHint="@color/grey" />
+
+
+            <Button
+                android:id="@+id/create_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="40dp"
+                android:background="@drawable/custombutton"
+                android:text="Publish"
+                android:textColor="@color/grey" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>
