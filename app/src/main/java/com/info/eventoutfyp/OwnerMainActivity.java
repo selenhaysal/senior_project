@@ -1,6 +1,7 @@
 package com.info.eventoutfyp;
 
 import android.content.Intent;
+import android.app.IntentService;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -23,17 +24,16 @@ import android.widget.Toast;
 
 
 
-public class OwnerMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-
+public class OwnerMainActivity extends  AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    //private TextView email;
+    //private Button signOut;
 
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private DatabaseReference databaseReference;
     private String email,name;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +59,10 @@ public class OwnerMainActivity extends AppCompatActivity implements NavigationVi
                     finish();
                 }
 
-                name = user.getUid();
-                email = user.getEmail();
-                ((TextView) findViewById(R.id.nameLabel)).setText(name);
-                ((TextView) findViewById(R.id.emailLabel)).setText(email);
+//                name = user.getUid();
+//                email = user.getEmail();
+//                ((TextView) findViewById(R.id.nameLabel)).setText(name);
+//                ((TextView) findViewById(R.id.emailLabel)).setText(email);
 
 
             }
@@ -85,6 +85,7 @@ public class OwnerMainActivity extends AppCompatActivity implements NavigationVi
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new EventsFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_events);
         }
+
 
 //
 //        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid());
