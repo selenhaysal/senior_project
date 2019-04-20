@@ -24,14 +24,14 @@ import android.widget.Toast;
 
 
 public class OwnerMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    //private TextView email;
-    //private Button signOut;
+
+
 
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private DatabaseReference databaseReference;
-    private TextView email,name;
+    private String email,name;
 
 
 
@@ -46,8 +46,6 @@ public class OwnerMainActivity extends AppCompatActivity implements NavigationVi
 
         //get firebase auth instance
         auth = FirebaseAuth.getInstance();
-        email = (TextView) findViewById(R.id.emailLabel);
-        name = (TextView) findViewById(R.id.nameLabel);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         authListener = new FirebaseAuth.AuthStateListener() {
@@ -60,10 +58,11 @@ public class OwnerMainActivity extends AppCompatActivity implements NavigationVi
                     startActivity(new Intent(OwnerMainActivity.this, LoginActivity.class));
                     finish();
                 }
-/*                else{
-                    email.setText(user.getEmail());
-                    name.setText(user.getUid());
-                }*/
+
+                name = user.getUid();
+                email = user.getEmail();
+                ((TextView) findViewById(R.id.nameLabel)).setText(name);
+                ((TextView) findViewById(R.id.emailLabel)).setText(email);
 
 
             }
@@ -71,11 +70,6 @@ public class OwnerMainActivity extends AppCompatActivity implements NavigationVi
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
-
-
-
 
 
 
