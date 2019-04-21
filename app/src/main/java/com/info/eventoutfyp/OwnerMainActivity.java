@@ -2,7 +2,9 @@ package com.info.eventoutfyp;
 
 import android.content.Intent;
 import android.app.IntentService;
+import android.os.Handler;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,10 +23,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import android.widget.Toast;
 
-
-
-
-
 public class OwnerMainActivity extends  AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     //private TextView email;
     //private Button signOut;
@@ -34,6 +32,14 @@ public class OwnerMainActivity extends  AppCompatActivity implements NavigationV
     private DrawerLayout drawer;
     private DatabaseReference databaseReference;
     private String email,name;
+
+    Handler handle = new Handler(){
+      @Override
+      public void handleMessage(Message msg){
+          ((TextView) findViewById(R.id.nameLabel)).setText(name);
+          ((TextView) findViewById(R.id.emailLabel)).setText(email);
+      }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +57,7 @@ public class OwnerMainActivity extends  AppCompatActivity implements NavigationV
         authListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+                final FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user == null) {
                     // user auth state is changed - user is null
                     // launch login activity
@@ -59,21 +65,22 @@ public class OwnerMainActivity extends  AppCompatActivity implements NavigationV
                     finish();
                 }
 
-//                name = user.getUid();
-//                email = user.getEmail();
-//                ((TextView) findViewById(R.id.nameLabel)).setText(name);
-//                ((TextView) findViewById(R.id.emailLabel)).setText(email);
+                Runnable r =new Runnable() {
+                    @Override
+                    public void run() {
+                        name = user.getUid();
+                        email = user.getEmail();
 
-
+                        handle.sendEmptyMessage(0);
+                    }
+                };
+                Thread th = new Thread(r);
+                th.start();
             }
         };
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
-
-
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

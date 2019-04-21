@@ -62,7 +62,7 @@ public class AttenderMainActivity extends AppCompatActivity  {
 
         toaster.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "your id is" + auth.getCurrentUser().getUid(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "your id is " + auth.getCurrentUser().getUid(), Toast.LENGTH_SHORT).show();
             }
         });
 
