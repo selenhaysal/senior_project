@@ -2,8 +2,10 @@ package com.info.eventoutfyp;
 
 public class User {
 
-    private String id;
-    private int type;
+    String id;
+    int type;
+
+    public User(){}
 
     public User(String id, int type)
     {

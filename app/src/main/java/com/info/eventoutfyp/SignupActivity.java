@@ -31,7 +31,7 @@ public class SignupActivity extends AppCompatActivity {
     private Button btnSignIn, btnSignUp, btnResetPassword;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
-    private int type = 0;//encoded for attender
+    private int type;//encoded for attender
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
