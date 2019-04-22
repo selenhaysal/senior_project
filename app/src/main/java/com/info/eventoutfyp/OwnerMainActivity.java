@@ -10,15 +10,9 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import android.widget.Toast;
+
 
 
 
@@ -30,9 +24,6 @@ public class OwnerMainActivity extends AppCompatActivity implements NavigationVi
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
     private DrawerLayout drawer;
-    private DatabaseReference databaseReference;
-    private String email,name;
-
 
 
     @Override
@@ -59,10 +50,10 @@ public class OwnerMainActivity extends AppCompatActivity implements NavigationVi
                     finish();
                 }
 
-                name = user.getUid();
+/*                name = user.getUid();
                 email = user.getEmail();
                 ((TextView) findViewById(R.id.nameLabel)).setText(name);
-                ((TextView) findViewById(R.id.emailLabel)).setText(email);
+                ((TextView) findViewById(R.id.emailLabel)).setText(email);*/
 
 
             }
@@ -86,22 +77,6 @@ public class OwnerMainActivity extends AppCompatActivity implements NavigationVi
             navigationView.setCheckedItem(R.id.nav_events);
         }
 
-//
-//        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid());
-//        //email.setText(user.getEmail());
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                User user = dataSnapshot.getValue(User.class);
-//                name.setText(user.getId());
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                Toast.makeText(OwnerMainActivity.this, databaseError.getCode(),Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
 
     }
 
@@ -124,7 +99,7 @@ public class OwnerMainActivity extends AppCompatActivity implements NavigationVi
         if (id == R.id.nav_events) {
             // Handle the camera action
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new EventsFragment()).commit();
-        } else if (id == R.id.nav_discounts) {
+        } else if (id == R.id.nav_myEventList) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new EventListFragment()).commit();
 
         } else if (id == R.id.nav_profile) {
