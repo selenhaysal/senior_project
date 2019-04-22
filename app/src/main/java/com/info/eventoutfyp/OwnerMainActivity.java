@@ -34,6 +34,7 @@ public class OwnerMainActivity extends  AppCompatActivity implements NavigationV
     private FirebaseAuth auth;
     private DrawerLayout drawer;
     private DatabaseReference databaseReference;
+    private int temp;
     private String email,name;
 
     @SuppressLint("HandlerLeak")
@@ -92,6 +93,7 @@ public class OwnerMainActivity extends  AppCompatActivity implements NavigationV
 
             }
         };
+
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
