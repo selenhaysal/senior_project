@@ -28,7 +28,8 @@ import com.google.android.gms.tasks.Task;
  * Created by User on 10/2/2017.
  */
 
-public class AttenderMapsActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class AttenderMapsActivity extends AppCompatActivity implements OnMapReadyCallback
+{
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -45,7 +46,7 @@ public class AttenderMapsActivity extends AppCompatActivity implements OnMapRead
                 return;
             }
             mMap.setMyLocationEnabled(true);
-            mMap.getUiSettings().setMyLocationButtonEnabled(false);
+            mMap.getUiSettings().setMyLocationButtonEnabled(true);
 
         }
     }

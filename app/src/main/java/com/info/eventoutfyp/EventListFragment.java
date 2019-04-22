@@ -68,8 +68,6 @@ public class EventListFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot uniqueKeySnapshot : dataSnapshot.getChildren()) {
                     Event event = uniqueKeySnapshot.getValue(Event.class);
-//                    eventList.add(event);
-//                    String test = event.getVenueID();
                     if (event.getVenueID().equals(venueID))
                         eventList.add(event);
                 }
@@ -86,30 +84,3 @@ public class EventListFragment extends Fragment {
         });
     }
 }
-
-
-
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for (DataSnapshot eventSnapshot : dataSnapshot.getChildren()) {
-//
-//                    Event event = eventSnapshot.getValue(Event.class);
-//                    eventList.add(event);
-//
-//                }
-//
-//                EventInfoAdapter eventInfoAdapter = new EventInfoAdapter(EventListFragment.this.getActivity(), eventList);
-//                listView.setAdapter(eventInfoAdapter);
-//            }
-//
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
