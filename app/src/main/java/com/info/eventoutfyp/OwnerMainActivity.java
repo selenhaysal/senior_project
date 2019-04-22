@@ -124,7 +124,7 @@ public class OwnerMainActivity extends AppCompatActivity implements NavigationVi
         if (id == R.id.nav_events) {
             // Handle the camera action
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new EventsFragment()).commit();
-        } else if (id == R.id.nav_discounts) {
+        } else if (id == R.id.nav_myEventList) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new EventListFragment()).commit();
 
         } else if (id == R.id.nav_profile) {
